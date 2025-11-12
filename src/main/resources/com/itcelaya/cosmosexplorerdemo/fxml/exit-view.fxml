@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox style="-fx-background-color: transparent;" styleClass="transparentContainer" stylesheets="@../css/stylesheet.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.exitController">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="288.0" spacing="16.0" styleClass="exitContainer">
+         <children>
+            <Label styleClass="h1" text="Simulación " />
+            <Label text="¿Está seguro de que desea salir de la simulación?" textAlignment="CENTER" wrapText="true" />
+            <HBox alignment="CENTER" spacing="64.0">
+               <children>
+                  <Button minHeight="35.0" minWidth="80.0" mnemonicParsing="false" onAction="#closePrimaryStage" styleClass="redBtn" text="Salir" />
+                  <Button minHeight="35.0" minWidth="80.0" mnemonicParsing="false" onAction="#closeThisStage" styleClass="greenBtn" text="Cancelar" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+   </padding>
+</VBox>
