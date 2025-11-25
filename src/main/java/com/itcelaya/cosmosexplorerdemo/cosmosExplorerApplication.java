@@ -10,11 +10,11 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class ToDoListApplication extends Application {
+public class cosmosExplorerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SceneManager.setStage(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(ToDoListApplication.class.getResource("fxml/login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(cosmosExplorerApplication.class.getResource("fxml/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setOpacity(0.0);
         stage.setScene(scene);

@@ -27,7 +27,7 @@ tasks.withType<JavaCompile> {
 
 application {
     mainModule.set("com.itcelaya.cosmosexplorerdemo")
-    mainClass.set("com.itcelaya.cosmosexplorerdemo.ToDoListApplication")
+    mainClass.set("com.itcelaya.cosmosexplorerdemo.cosmosExplorerApplication")
 }
 
 javafx {

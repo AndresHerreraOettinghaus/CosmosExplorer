@@ -1,6 +1,6 @@
 package com.itcelaya.cosmosexplorerdemo.util;
 
-import com.itcelaya.cosmosexplorerdemo.ToDoListApplication;
+import com.itcelaya.cosmosexplorerdemo.cosmosExplorerApplication;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
@@ -32,7 +32,7 @@ public class SceneManager {
 
     public static void loadFxml(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(ToDoListApplication.class.getResource(fxmlFile));
+            FXMLLoader loader = new FXMLLoader(cosmosExplorerApplication.class.getResource(fxmlFile));
             Pane root = loader.load();
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
@@ -59,7 +59,7 @@ public class SceneManager {
 
     public static void launchNewWindow(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(ToDoListApplication.class.getResource(fxmlFile));
+            FXMLLoader loader = new FXMLLoader(cosmosExplorerApplication.class.getResource(fxmlFile));
             Pane root = loader.load();
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
@@ -77,7 +77,7 @@ public class SceneManager {
 
     public static void loadVbox(VBox windowContainer, String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(ToDoListApplication.class.getResource(fxmlFile));
+            FXMLLoader loader = new FXMLLoader(cosmosExplorerApplication.class.getResource(fxmlFile));
             Pane root = loader.load();
             windowContainer.getChildren().clear();
             windowContainer.getChildren().add(root);
