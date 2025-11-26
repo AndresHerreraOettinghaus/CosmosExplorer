@@ -5,7 +5,7 @@ import com.dlsc.formsfx.model.structure.Form;
 import com.dlsc.formsfx.model.structure.Group;
 import com.dlsc.formsfx.model.structure.StringField;
 import com.dlsc.formsfx.view.renderer.FormRenderer;
-import com.itcelaya.cosmosexplorerdemo.DAO.UserDAO;
+import com.itcelaya.cosmosexplorerdemo.DAO.spaceX.UserDAO;
 import com.itcelaya.cosmosexplorerdemo.models.spaceX.User;
 import com.itcelaya.cosmosexplorerdemo.util.SceneManager;
 import com.itcelaya.cosmosexplorerdemo.util.spaceX.loginImageManager;

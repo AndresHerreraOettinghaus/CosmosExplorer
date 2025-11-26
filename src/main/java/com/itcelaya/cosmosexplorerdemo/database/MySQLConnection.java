@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.database.spaceX;
+package com.itcelaya.cosmosexplorerdemo.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -24,7 +24,7 @@ public class menuController implements Initializable {
     }
     @FXML
     void loadPlanetData() {
-        SceneManager.loadVbox(windowContainer, "fxml/planet/loginPlanet.fxml");
+        SceneManager.loadVbox(windowContainer, "fxml/apod/loginPlanet.fxml");
     }
     @FXML
     void loadISS() {
@@ -33,7 +33,7 @@ public class menuController implements Initializable {
 
     @FXML
     void loadSolarSystem() {
-
+        SceneManager.loadVbox(windowContainer, "fxml/SolarSystem/solar-system-view.fxml");
     }
     @FXML
     void exitProgram() {
@@ -47,17 +47,17 @@ public class menuController implements Initializable {
     }
     @FXML
     public VBox loadRegistryPlanet() {
-        SceneManager.loadVbox(windowContainer, "fxml/planet/RegistroExplorador.xml");
+        SceneManager.loadVbox(windowContainer, "fxml/apod/RegistroExplorador.xml");
         return null;
     }
     @FXML
     public VBox loadLoginPlanet() {
-        SceneManager.loadVbox(windowContainer, "fxml/planet/loginPlanet.fxml");
+        SceneManager.loadVbox(windowContainer, "fxml/apod/loginPlanet.fxml");
         return null;
     }
     @FXML
     public VBox loadPlanet() {
-        SceneManager.loadVbox(windowContainer, "fxml/planet/planet.fxml");
+        SceneManager.loadVbox(windowContainer, "fxml/apod/planet.fxml");
         return null;
     }
 

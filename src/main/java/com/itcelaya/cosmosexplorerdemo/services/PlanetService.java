@@ -111,16 +111,28 @@ public class PlanetService {
     // ===============================
     public static String descargarImagen(Planet apod) {
         try {
-            String folder = "descargas/";
+            // Obtener ruta del escritorio
+            String escritorio = System.getProperty("user.home") + "/Desktop/";
+
+            // Carpeta destino
+            String folder = escritorio + "ExploradorCosmos/APOD/";
+
             File dir = new File(folder);
-            if (!dir.exists()) dir.mkdirs();
+            if (!dir.exists()) {
+                boolean creada = dir.mkdirs();
+                System.out.println("📁 Carpeta creada: " + creada + " → " + folder);
+            } else {
+                System.out.println("📁 Carpeta existente → " + folder);
+            }
 
+            // Nombre del archivo
             String filename = "apod_" + apod.getDate().replace("-", "_") + ".jpg";
-            String path = folder + filename;
+            String fullPath = folder + filename;
 
+            // Descargar
             URL url = new URL(apod.getUrl());
             InputStream in = url.openStream();
-            FileOutputStream out = new FileOutputStream(path);
+            FileOutputStream out = new FileOutputStream(fullPath);
 
             byte[] buffer = new byte[4096];
             int bytesRead;
@@ -132,10 +144,11 @@ public class PlanetService {
             in.close();
             out.close();
 
-            return filename;
+            System.out.println("✅ Imagen guardada en: " + fullPath);
+            return fullPath;
 
         } catch (Exception e) {
-            System.out.println("❌ Error al descargar imagen: " + e.getMessage());
+            System.out.println("❌ Error descargando imagen: " + e.getMessage());
         }
         return null;
     }

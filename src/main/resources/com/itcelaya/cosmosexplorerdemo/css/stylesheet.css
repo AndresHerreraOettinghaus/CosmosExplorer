@@ -147,14 +147,6 @@
  -fx-background-color: transparent;
 }
 
-.table-view {
- -fx-background-color: white;
- -fx-border-color: black;
- -fx-border-width: 2;
- -fx-table-cell-border-color: black;
- -fx-padding: 0;
-}
-
 .root {
  -fx-background-color: linear-gradient(
          from 0% 0% to 100% 100%,
@@ -217,7 +209,79 @@
  -fx-min-height: 39;
 }
 
-.container{
-
+/* Base del TableView */
+.table-view {
+ -fx-background-color: white;
+ -fx-border-color: black;
+ -fx-border-width: 2;
+ -fx-table-cell-border-color: black;
+ -fx-padding: 0;
+ -fx-font-size: 14px;
+ -fx-font-family: "Segoe UI", "Arial";
 }
 
+/* Encabezados (Column Headers) */
+.table-view .column-header-background {
+ -fx-background-color: linear-gradient(to bottom, white, #e6e6e6);
+ -fx-border-color: #1b3253;
+ -fx-border-width: 0 0 2 0;
+}
+
+.table-view .column-header {
+ -fx-background-color: transparent;
+ -fx-alignment: CENTER_LEFT;
+ -fx-padding: 6 0 6 8;
+}
+
+.table-view .column-header .label {
+ -fx-text-fill: black;
+ -fx-font-weight: bold;
+}
+
+/* Celdas */
+.table-view .table-cell {
+ -fx-alignment: CENTER_LEFT;
+ -fx-padding: 4 0 4 8;
+}
+
+/* Filas alternas estilo "zebra" */
+.table-row-cell:odd {
+ -fx-background-insets: 0;
+}
+
+.table-row-cell:even {
+ -fx-background-insets: 0;
+}
+
+/* Hover sobre fila completa (efecto suave) */
+.table-row-cell:hover {
+ -fx-scale-x: 1.002;
+ -fx-scale-y: 1.002;
+}
+
+/* Selección visible y moderna */
+.table-row-cell:selected {
+ -fx-background-insets: 0;
+ -fx-border-color: black;
+ -fx-border-width: 1;
+}
+
+/* ScrollBar minimalista */
+.table-view .scroll-bar:vertical,
+.table-view .scroll-bar:horizontal {
+ -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar .thumb {
+ -fx-background-color: #b3b3b3;
+ -fx-background-radius: 6;
+}
+
+.table-view .scroll-bar .track {
+ -fx-background-color: #f0f0f0;
+}
+
+/* Ocultar bordes extra de foco */
+.table-view:focused {
+ -fx-background-insets: 0;
+}

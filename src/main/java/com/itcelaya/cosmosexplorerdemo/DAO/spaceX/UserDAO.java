@@ -1,5 +1,6 @@
-package com.itcelaya.cosmosexplorerdemo.DAO;
-import com.itcelaya.cosmosexplorerdemo.database.spaceX.MySQLConnection;
+package com.itcelaya.cosmosexplorerdemo.DAO.spaceX;
+import com.itcelaya.cosmosexplorerdemo.DAO.Dao;
+import com.itcelaya.cosmosexplorerdemo.database.MySQLConnection;
 import com.itcelaya.cosmosexplorerdemo.models.spaceX.User;
 
 import java.sql.*;
