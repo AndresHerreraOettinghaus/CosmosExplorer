@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.solarSystem.DetailController">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <Label fx:id="lblName" text="Nombre del Planeta" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="36.0" />
+        </font>
+    </Label>
+    <Label fx:id="lblType" text="Tipo de cuerpo" textFill="#b5b5b5">
+        <font>
+            <Font size="18.0" />
+        </font>
+    </Label>
+
+    <HBox alignment="CENTER" spacing="40.0" VBox.vgrow="ALWAYS">
+
+        <VBox alignment="CENTER" style="-fx-border-color: #555; -fx-border-width: 2; -fx-border-radius: 10; -fx-padding: 10;">
+            <ImageView fx:id="imgPlanet" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+        </VBox>
+
+        <GridPane hgap="20.0" vgap="15.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" minWidth="120.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="30.0" />
+                <RowConstraints minHeight="30.0" />
+                <RowConstraints minHeight="30.0" />
+                <RowConstraints minHeight="30.0" />
+                <RowConstraints minHeight="30.0" />
+            </rowConstraints>
+
+            <Label text="Gravedad:" textFill="#f39c12" GridPane.rowIndex="0">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <Label fx:id="lblGravity" text="0.0 m/s²" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <font><Font size="14.0" /></font>
+            </Label>
+
+            <Label text="Radio Medio:" textFill="#f39c12" GridPane.rowIndex="1">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <Label fx:id="lblRadius" text="0 km" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <font><Font size="14.0" /></font>
+            </Label>
+
+            <Label text="Densidad:" textFill="#f39c12" GridPane.rowIndex="2">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <Label fx:id="lblDensity" text="0 g/cm³" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <font><Font size="14.0" /></font>
+            </Label>
+
+            <Label text="Descubierto por:" textFill="#f39c12" GridPane.rowIndex="3">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <Label fx:id="lblDiscovery" text="Desconocido" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <font><Font size="14.0" /></font>
+            </Label>
+
+            <Label text="Fecha:" textFill="#f39c12" GridPane.rowIndex="4">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <Label fx:id="lblDate" text="-" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <font><Font size="14.0" /></font>
+            </Label>
+        </GridPane>
+    </HBox>
+
+    <Button onAction="#closeWindow" text="Cerrar Ventana" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;">
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+        <padding>
+            <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+        </padding>
+    </Button>
+
+</VBox>

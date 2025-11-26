@@ -222,7 +222,7 @@
 
 /* Encabezados (Column Headers) */
 .table-view .column-header-background {
- -fx-background-color: linear-gradient(to bottom, white, #e6e6e6);
+ -fx-background-color: #1f395c;
  -fx-border-color: #1b3253;
  -fx-border-width: 0 0 2 0;
 }

@@ -3,19 +3,27 @@ package com.itcelaya.cosmosexplorerdemo.controllers.solarSystem;
 import com.google.gson.Gson;
 import com.itcelaya.cosmosexplorerdemo.DAO.SolarSystem.SolarSystemDAO;
 import com.itcelaya.cosmosexplorerdemo.DTO.SolarSystemDto;
+import com.itcelaya.cosmosexplorerdemo.cosmosExplorerApplication;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
+
+import static com.itcelaya.cosmosexplorerdemo.util.SceneManager.launchNewWindow;
 
 public class SolarSystemController {
 
@@ -33,6 +41,43 @@ public class SolarSystemController {
         colGravity.setCellValueFactory(new PropertyValueFactory<>("gravity"));
 
         loadDataFromApi();
+
+        bodiesTable.setRowFactory(tv -> {
+            javafx.scene.control.TableRow<SolarSystemDto.Body> row = new javafx.scene.control.TableRow<>();
+            row.setOnMouseClicked(event -> {
+                // Verifica si fue doble click y si la fila no está vacía
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    SolarSystemDto.Body rowData = row.getItem();
+                    // Llamamos al método que abre la ventana
+                    openDetailWindow(rowData);
+                }
+            });
+            return row;
+        });
+    }
+
+    private void openDetailWindow(SolarSystemDto.Body body) {
+        try {
+//            launchNewWindow("fxml/SolarSystem/detail-view.fxml");
+            // 1. Cargar el FXML
+            FXMLLoader loader = new FXMLLoader(cosmosExplorerApplication.class.getResource("fxml/SolarSystem/detail-view.fxml"));
+            Parent root = loader.load();
+
+            // 2. Obtener el controlador de esa nueva vista
+            DetailController controller = loader.getController();
+
+            // 3. PASARLE LOS DATOS (Aquí ocurre la magia)
+            controller.setPlanetData(body);
+
+            // 4. Mostrar la ventana
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Detalles de " + body.getEnglishName());
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadDataFromApi() {

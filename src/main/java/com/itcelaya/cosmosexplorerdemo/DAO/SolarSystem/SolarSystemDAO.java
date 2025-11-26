@@ -1,9 +1,7 @@
 package com.itcelaya.cosmosexplorerdemo.DAO.SolarSystem;
 
-
 import com.itcelaya.cosmosexplorerdemo.DTO.SolarSystemDto;
 import com.itcelaya.cosmosexplorerdemo.database.MySQLConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
