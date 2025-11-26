@@ -1,8 +1,8 @@
-package com.itcelaya.cosmosexplorerdemo.controllers;
+package com.itcelaya.cosmosexplorerdemo.controllers.spaceX;
 
-import com.itcelaya.cosmosexplorerdemo.util.FavoriteEntry;
+import com.itcelaya.cosmosexplorerdemo.util.spaceX.FavoriteEntry;
 import com.itcelaya.cosmosexplorerdemo.util.SceneManager;
-import com.itcelaya.cosmosexplorerdemo.util.SpaceXImageManager;
+import com.itcelaya.cosmosexplorerdemo.util.spaceX.SpaceXImageManager;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

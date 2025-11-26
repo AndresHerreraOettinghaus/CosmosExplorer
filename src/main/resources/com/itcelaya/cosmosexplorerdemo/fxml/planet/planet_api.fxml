@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.planet.PlanetAPIController"
+      spacing="15" padding="20">
+
+    <Label text="🛰 Planet Labs — Búsqueda Satelital"
+           style="-fx-font-size:20px; -fx-font-weight:bold;" />
+
+    <HBox spacing="10">
+        <Label text="Fecha:" />
+        <TextField fx:id="txtFecha" promptText="YYYY-MM-DD" />
+        <Button text="Buscar" onAction="#buscarEscenas" />
+    </HBox>
+
+    <TableView fx:id="tablaEscenas" prefHeight="350">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="200" />
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150" />
+            <TableColumn fx:id="colNubes" text="Nubes %" prefWidth="80" />
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Ver Miniatura" onAction="#verMiniatura" />
+        <Button text="Volver" onAction="#volver" />
+    </HBox>
+
+</VBox>

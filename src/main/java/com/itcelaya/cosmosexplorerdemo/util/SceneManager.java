@@ -1,5 +1,6 @@
 package com.itcelaya.cosmosexplorerdemo.util;
 
+import com.itcelaya.cosmosexplorerdemo.controllers.menuController;
 import com.itcelaya.cosmosexplorerdemo.cosmosExplorerApplication;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -20,7 +21,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class SceneManager {
-
+    public static menuController menuController;
     private static Stage primaryStage;
     private static Stage popupStage;
 
@@ -156,5 +157,9 @@ public class SceneManager {
 
         // 7. Mostrar
         popupStage.show();
+    }
+
+    public static void setController(menuController menuController) {
+        SceneManager.menuController = menuController;
     }
 }

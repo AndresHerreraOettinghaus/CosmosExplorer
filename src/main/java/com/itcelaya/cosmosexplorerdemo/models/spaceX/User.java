@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.models;
+package com.itcelaya.cosmosexplorerdemo.models.spaceX;
 
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleStringProperty;

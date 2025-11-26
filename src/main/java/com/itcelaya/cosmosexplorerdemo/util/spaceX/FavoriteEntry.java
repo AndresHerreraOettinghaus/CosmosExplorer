@@ -1,6 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.util;
-
-import java.util.Objects;
+package com.itcelaya.cosmosexplorerdemo.util.spaceX;
 
 import java.util.Objects;
 

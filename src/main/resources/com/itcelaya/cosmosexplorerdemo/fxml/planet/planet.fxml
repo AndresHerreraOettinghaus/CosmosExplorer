@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" stylesheets="@../../css/stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.planet.PlanetController">
+
+    <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
+
+    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-background-color: white;" styleClass="title" text="📸 Astronomy Picture of the Day" />
+
+    <ImageView fx:id="imgApod" fitWidth="400" preserveRatio="true" styleClass="imageContainer" />
+    <Label fx:id="lblTitle" styleClass="default" />
+    <Label fx:id="lblDate" styleClass="default" />
+    <TextArea fx:id="txtExplanation" prefHeight="150" wrapText="true" />
+
+    <HBox spacing="10">
+        <Button onAction="#cargarApod" text="🔄  Cargar APOD" />
+        <Button onAction="#guardarApod" text="💾  Guardar" />
+        <Button onAction="#mostrarHistorial" text="📚  Historial" />
+    </HBox>
+
+</VBox>

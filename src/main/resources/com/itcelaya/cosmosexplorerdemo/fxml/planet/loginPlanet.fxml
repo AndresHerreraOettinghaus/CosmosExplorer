@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" style="-fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e);" stylesheets="@../../css/stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.planet.PlanetLoginController">
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30" />
+    </padding>
+
+    <Label style="-fx-font-size:24px; -fx-font-weight:bold; -fx-text-fill: white;" styleClass="default" text="🌌 Explorador del Cosmos" />
+
+    <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-font-size: 16px;" styleClass="default" text="Iniciar Sesión" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+
+    <VBox maxWidth="300" spacing="10">
+        <Label style="-fx-text-fill: white;" styleClass="default" text="Usuario:" />
+        <TextField fx:id="txtUsername" promptText="Ingresa tu usuario" />
+
+        <Label style="-fx-text-fill: white;" styleClass="default" text="Contraseña:" />
+        <PasswordField fx:id="txtPassword" promptText="Ingresa tu contraseña" />
+
+        <Label fx:id="lblError" maxWidth="1.7976931348623157E308" style="-fx-text-fill: #ff6b6b; -fx-font-weight:bold;" styleClass="default" />
+
+
+        <Button maxWidth="Infinity" onAction="#iniciarSesion" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size:14px;" text="🚀 Iniciar Sesión" />
+
+        <Button maxWidth="Infinity" onAction="#registrarse" style="-fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;" text="📝 Registrarse" />
+    </VBox>
+
+    <Label style="-fx-font-size:10px; -fx-text-fill: #888888;" styleClass="default" text="💡 Usuario de prueba: admin / admin" />
+</VBox>

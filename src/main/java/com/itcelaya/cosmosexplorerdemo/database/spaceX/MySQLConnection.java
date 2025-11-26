@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.database;
+package com.itcelaya.cosmosexplorerdemo.database.spaceX;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,5 +23,4 @@ public class MySQLConnection {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, DBUSER, DBPASS);
     }
-
 }

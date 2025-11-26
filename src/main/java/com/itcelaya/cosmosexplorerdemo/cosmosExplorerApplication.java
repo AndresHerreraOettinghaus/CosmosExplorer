@@ -14,8 +14,8 @@ public class cosmosExplorerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SceneManager.setStage(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(cosmosExplorerApplication.class.getResource("fxml/login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(cosmosExplorerApplication.class.getResource("fxml/menu-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280,720);
         stage.setOpacity(0.0);
         stage.setScene(scene);
         stage.show();

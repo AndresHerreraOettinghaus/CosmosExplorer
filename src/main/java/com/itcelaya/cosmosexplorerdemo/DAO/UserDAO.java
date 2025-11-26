@@ -1,6 +1,6 @@
 package com.itcelaya.cosmosexplorerdemo.DAO;
-import com.itcelaya.cosmosexplorerdemo.database.MySQLConnection;
-import com.itcelaya.cosmosexplorerdemo.models.User;
+import com.itcelaya.cosmosexplorerdemo.database.spaceX.MySQLConnection;
+import com.itcelaya.cosmosexplorerdemo.models.spaceX.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class UserDAO implements Dao<User> {
             if (rs.next()) {
                 User user = new User(
                         rs.getInt("id"),
-                        rs.getString("username"),
+                        rs.getString("userName"),
                         rs.getString("email"),
                         rs.getString("password")
                 );
@@ -45,7 +45,7 @@ public class UserDAO implements Dao<User> {
             while (rs.next()) {
                 users.add(new User(
                         rs.getInt("id"),
-                        rs.getString("username"),
+                        rs.getString("userName"),
                         rs.getString("email"),
                         rs.getString("password")
                 ));
@@ -69,7 +69,7 @@ public class UserDAO implements Dao<User> {
                 if (rs.next()) {
                     return new User(
                             rs.getInt("id"),
-                            rs.getString("username"),
+                            rs.getString("userName"),
                             rs.getString("email"),
                             rs.getString("password")
                     );
@@ -81,10 +81,24 @@ public class UserDAO implements Dao<User> {
         return null;
     }
 
-
     @Override
-    public boolean save(User record) {
-        return false;
+    public boolean save(User user) {
+        String query = "INSERT INTO User(userName, email, password) VALUES (?, ?, ?)";
+
+        try (Connection conn = MySQLConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            System.err.println("Error saving user: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override

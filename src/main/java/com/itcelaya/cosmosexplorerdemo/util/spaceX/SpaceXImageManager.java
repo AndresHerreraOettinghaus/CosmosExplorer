@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.util;
+package com.itcelaya.cosmosexplorerdemo.util.spaceX;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

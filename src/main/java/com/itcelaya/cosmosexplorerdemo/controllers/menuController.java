@@ -10,24 +10,24 @@ import java.util.ResourceBundle;
 
 public class menuController implements Initializable {
     @FXML
-    private VBox windowContainer;
+    public VBox windowContainer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SceneManager.loadVbox(windowContainer, "fxml/spaceXAPI-view.fxml");
+        SceneManager.setController(this);
+        SceneManager.loadVbox(windowContainer, "fxml/spaceX/loginSpaceX-view.fxml");
     }
     @FXML
-    void loadSpaceX() {
-        SceneManager.loadVbox(windowContainer, "fxml/spaceXAPI-view.fxml");
+    public VBox loadSpaceX() {
+        SceneManager.loadVbox(windowContainer, "fxml/spaceX/spaceXAPI-view.fxml");
+        return null;
     }
-
-    @FXML
-    void loadISS() {
-
-    }
-
     @FXML
     void loadPlanetData() {
+        SceneManager.loadVbox(windowContainer, "fxml/planet/loginPlanet.fxml");
+    }
+    @FXML
+    void loadISS() {
 
     }
 
@@ -39,4 +39,26 @@ public class menuController implements Initializable {
     void exitProgram() {
         SceneManager.launchNewWindow("fxml/exit-view.fxml");
     }
+
+    @FXML
+    VBox loadLoginSpaceX() {
+        SceneManager.loadVbox(windowContainer, "fxml/spaceX/loginSpaceX-view.fxml");
+        return null;
+    }
+    @FXML
+    public VBox loadRegistryPlanet() {
+        SceneManager.loadVbox(windowContainer, "fxml/planet/RegistroExplorador.xml");
+        return null;
+    }
+    @FXML
+    public VBox loadLoginPlanet() {
+        SceneManager.loadVbox(windowContainer, "fxml/planet/loginPlanet.fxml");
+        return null;
+    }
+    @FXML
+    public VBox loadPlanet() {
+        SceneManager.loadVbox(windowContainer, "fxml/planet/planet.fxml");
+        return null;
+    }
+
 }
