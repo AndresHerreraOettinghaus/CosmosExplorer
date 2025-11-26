@@ -12,7 +12,7 @@
       <VBox alignment="CENTER" prefHeight="537.0" prefWidth="262.0" spacing="16.0" styleClass="btnContainer">
          <children>
             <Separator layoutX="18.0" layoutY="191.0" prefWidth="200.0" />
-            <Button graphicTextGap="8.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadSpaceX" styleClass="startBtn" text="SPACE X" wrapText="true">
+            <Button graphicTextGap="8.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadSpaceX" text="SPACE X" wrapText="true">
                <graphic>
                   <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-rocket" />
                </graphic>
@@ -21,18 +21,24 @@
                </VBox.margin>
             </Button>
             <Separator prefWidth="200.0" />
-            <Button graphicTextGap="8.0" layoutX="53.0" layoutY="188.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadNasa" styleClass="greenBtn" text="NASA" wrapText="true">
+            <Button graphicTextGap="8.0" layoutX="53.0" layoutY="188.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadISS" text="Where the ISS at" wrapText="true">
                <graphic>
                   <FontIcon fill="WHITE" iconLiteral="fas-rocket" />
                </graphic>
             </Button>
             <Separator layoutX="14.0" layoutY="236.0" prefWidth="200.0" />
-            <Button graphicTextGap="8.0" layoutX="43.0" layoutY="255.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadPlanets" styleClass="blueBtn" text="PLANETS" wrapText="true">
+            <Button graphicTextGap="8.0" layoutX="43.0" layoutY="255.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadSolarSystem" styleClass="blueBtn" text="The Solar System OpenData" wrapText="true">
                <graphic>
                   <FontIcon fill="WHITE" iconLiteral="fas-rocket" />
                </graphic>
             </Button>
             <Separator layoutX="10.0" layoutY="229.0" prefWidth="200.0" />
+            <Button graphicTextGap="8.0" layoutX="61.0" layoutY="300.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#loadPlanetData" styleClass="blueBtn" text="Planet Data API" wrapText="true">
+               <graphic>
+                  <FontIcon fill="WHITE" iconLiteral="fas-rocket" />
+               </graphic>
+            </Button>
+            <Separator layoutX="14.0" layoutY="372.0" prefWidth="200.0" />
             <Button graphicTextGap="8.0" layoutX="53.0" layoutY="218.0" maxWidth="160.0" minHeight="56.0" mnemonicParsing="false" onAction="#exitProgram" styleClass="redBtn" text="Exit" wrapText="true">
                <graphic>
                   <FontIcon fill="WHITE" iconLiteral="far-window-close" />

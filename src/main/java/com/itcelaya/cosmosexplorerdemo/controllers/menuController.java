@@ -22,15 +22,19 @@ public class menuController implements Initializable {
     }
 
     @FXML
-    void loadNasa() {
-        SceneManager.launchNewWindow("fxml/nasaAPI-view.fxml");
+    void loadISS() {
+
     }
 
     @FXML
-    void loadPlanets() {
-        SceneManager.launchNewWindow("fxml/planetsAPI-view.fxml");
+    void loadPlanetData() {
+
     }
 
+    @FXML
+    void loadSolarSystem() {
+
+    }
     @FXML
     void exitProgram() {
         SceneManager.launchNewWindow("fxml/exit-view.fxml");

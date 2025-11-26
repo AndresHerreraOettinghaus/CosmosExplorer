@@ -17,7 +17,7 @@ val junitVersion = "5.10.2"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(23)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
