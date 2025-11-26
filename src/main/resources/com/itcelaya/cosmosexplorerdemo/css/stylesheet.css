@@ -44,8 +44,7 @@
 }
 
 .button {
- -fx-background-color: #ffffff;
-
+ -fx-background-color: #656565;
  -fx-text-fill: #ffffff;
  -fx-font-size: 10pt;
  -fx-font-weight: bold;
