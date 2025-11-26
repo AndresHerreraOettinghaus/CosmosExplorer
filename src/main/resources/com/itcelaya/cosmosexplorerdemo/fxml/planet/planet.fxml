@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="10" stylesheets="@../../css/stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.planet.PlanetController">
+<VBox alignment="CENTER" spacing="10" stylesheets="@../../css/stylesheet.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.Apod.PlanetController">
 
     <padding><Insets bottom="20" left="20" right="20" top="20" /></padding>
 

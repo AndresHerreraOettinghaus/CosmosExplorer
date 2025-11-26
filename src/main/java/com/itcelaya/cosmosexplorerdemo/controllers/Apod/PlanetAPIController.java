@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.controllers.planet;
+package com.itcelaya.cosmosexplorerdemo.controllers.Apod;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

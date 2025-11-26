@@ -5,7 +5,7 @@
 <?import javafx.geometry.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.planet.PlanetAPIController"
+      fx:controller="com.itcelaya.cosmosexplorerdemo.controllers.Apod.PlanetAPIController"
       spacing="15" padding="20">
 
     <Label text="🛰 Planet Labs — Búsqueda Satelital"

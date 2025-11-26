@@ -17,6 +17,6 @@ module com.itcelaya.cosmosexplorerdemo {
     opens com.itcelaya.cosmosexplorerdemo to javafx.fxml;
     opens com.itcelaya.cosmosexplorerdemo.controllers to javafx.fxml;
     exports com.itcelaya.cosmosexplorerdemo;
-    opens com.itcelaya.cosmosexplorerdemo.controllers.planet to javafx.fxml;
+    opens com.itcelaya.cosmosexplorerdemo.controllers.Apod to javafx.fxml;
     opens com.itcelaya.cosmosexplorerdemo.controllers.spaceX to javafx.fxml;
 }

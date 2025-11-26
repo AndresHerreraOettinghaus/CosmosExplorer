@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.controllers.planet;
+package com.itcelaya.cosmosexplorerdemo.controllers.Apod;
 
 import com.itcelaya.cosmosexplorerdemo.models.planet.Planet;
 import com.itcelaya.cosmosexplorerdemo.services.PlanetService;

@@ -1,9 +1,10 @@
-package com.itcelaya.cosmosexplorerdemo.controllers.planet;
+package com.itcelaya.cosmosexplorerdemo.controllers.Apod;
 
 import com.itcelaya.cosmosexplorerdemo.models.planet.Planet;
 import com.itcelaya.cosmosexplorerdemo.services.PlanetService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -12,8 +13,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PlanetController {
+
+public class PlanetController implements Initializable {
 
     @FXML private ImageView imgApod;
     @FXML private Label lblTitle;
@@ -60,5 +64,17 @@ public class PlanetController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(msg);
         alert.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Planet apod = PlanetService.obtenerApod();
+        if (apod != null) {
+            apodActual = apod;
+            lblTitle.setText(apod.getTitle());
+            lblDate.setText(apod.getDate());
+            txtExplanation.setText(apod.getExplanation());
+            imgApod.setImage(new Image(apod.getUrl()));
+        }
     }
 }
