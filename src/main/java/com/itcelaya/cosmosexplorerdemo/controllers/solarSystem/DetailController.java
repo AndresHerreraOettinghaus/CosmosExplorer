@@ -43,7 +43,6 @@ public class DetailController {
         lblDiscovery.setText(body.getDiscoveredBy() != null && !body.getDiscoveredBy().isEmpty() ? body.getDiscoveredBy() : "Antigüedad");
         lblDate.setText(body.getDiscoveryDate() != null && !body.getDiscoveryDate().isEmpty() ? body.getDiscoveryDate() : "-");
 
-        // 🔍 Normalizar el tipo
         String typeKey = body.getBodyType().toLowerCase().trim();
 
         String fileName = imageByType.getOrDefault(typeKey, "default.jpg");
@@ -56,7 +55,7 @@ public class DetailController {
             imgPlanet.setImage(new Image(stream));
         } else {
             System.out.println("⚠️ No se encontró la imagen: " + imagePath);
-            imgPlanet.setImage(new Image(cosmosExplorerApplication.class.getResource("images/SolarSystem/moon.png").openStream()));
+            imgPlanet.setImage(new Image(cosmosExplorerApplication.class.getResource("images/SolarSystem/Black_question_mark.png").openStream()));
         }
     }
 
