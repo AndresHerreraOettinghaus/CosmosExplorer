@@ -1,5 +1,6 @@
 package com.itcelaya.cosmosexplorerdemo.controllers.spaceX;
 
+import com.itcelaya.cosmosexplorerdemo.DAO.spaceX.FavoriteImageDAO;
 import com.itcelaya.cosmosexplorerdemo.util.spaceX.FavoriteEntry;
 import com.itcelaya.cosmosexplorerdemo.util.SceneManager;
 import com.itcelaya.cosmosexplorerdemo.util.spaceX.SpaceXImageManager;
@@ -15,54 +16,62 @@ import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+
 public class mainViewController implements Initializable {
-    @FXML
-    private Label titleImage;
 
-    @FXML
-    private Label date;
-
-    @FXML
-    private Label description;
-
-    @FXML
-    private Hyperlink hyperLink;
-
-    @FXML
-    private ImageView imageviewAPI;
+    @FXML private Label titleImage;
+    @FXML private Label date;
+    @FXML private Label description;
+    @FXML private Hyperlink hyperLink;
+    @FXML private ImageView imageviewAPI;
     private SpaceXImageManager imageManager;
 
-    @FXML
-    private ListView<FavoriteEntry> favoritesImagesTableview;
+    @FXML private ListView<FavoriteEntry> favoritesImagesTableview;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageManager = new SpaceXImageManager(imageviewAPI);
-
-        titleImage.textProperty().bind(imageManager.currentTitleProperty());
-        date.textProperty().bind(imageManager.currentDateProperty());
-        description.textProperty().bind(imageManager.currentDescriptionProperty());
-        hyperLink.textProperty().bind(imageManager.currentHyperlinkProperty());
-        hyperLink.visibleProperty().bind(
-                imageManager.currentHyperlinkProperty().isNotNull()
-                        .and(imageManager.currentHyperlinkProperty().isNotEmpty())
-        );
-        imageManager.initializeManager();
-        setupFavoritesListView();
         bindDataToManager();
-        favoritesImagesTableview.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldSelection, newSelection) -> {
-                    if (newSelection != null) {
-                        onFavoriteSelected(newSelection);
-                    }
-                }
-        );    }
+        setupFavoritesListView();
+        loadFavoritesFromDatabase();
+    }
 
+    private void loadFavoritesFromDatabase() {
+        try {
+            var favs = FavoriteImageDAO.getFavoritesByUser(SceneManager.getUserKey());
+            favoritesImagesTableview.setItems(favs);
+
+            imageManager = new SpaceXImageManager(imageviewAPI);
+
+            titleImage.textProperty().bind(imageManager.currentTitleProperty());
+            date.textProperty().bind(imageManager.currentDateProperty());
+            description.textProperty().bind(imageManager.currentDescriptionProperty());
+            hyperLink.textProperty().bind(imageManager.currentHyperlinkProperty());
+            hyperLink.visibleProperty().bind(
+                    imageManager.currentHyperlinkProperty().isNotNull()
+                            .and(imageManager.currentHyperlinkProperty().isNotEmpty())
+            );
+            imageManager.initializeManager();
+            setupFavoritesListView();
+            bindDataToManager();
+            favoritesImagesTableview.getSelectionModel().selectedItemProperty().addListener(
+                    (obs, oldSelection, newSelection) -> {
+                        if (newSelection != null) {
+                            onFavoriteSelected(newSelection);
+                        }
+                    }
+            );
+
+        } catch (SQLException | NumberFormatException e) {
+            System.err.println("Error cargando favoritos: " + e.getMessage());
+        }
+    }
 
     @FXML
     void addToFavorites() {
@@ -70,10 +79,10 @@ public class mainViewController implements Initializable {
         String fullTitle = titleImage.getText();
         String currentDate = date.getText();
         String currentDesc = description.getText();
-        String currentLink = hyperLink.getText(); // Hyperlink.getText() da la URL
+        String currentLink = hyperLink.getText();
 
         if (currentImage == null || currentImage.getUrl() == null ||
-                fullTitle == null || fullTitle.isBlank() || fullTitle.equals("Cargando...")) {
+                fullTitle == null || fullTitle.isBlank() || fullTitle.equals("Loading...")) {
             new Alert(Alert.AlertType.WARNING, "No hay información de imagen para guardar.").showAndWait();
             return;
         }
@@ -82,14 +91,62 @@ public class mainViewController implements Initializable {
         String shortTitle = Arrays.stream(fullTitle.split("\\s+"))
                 .limit(2)
                 .collect(Collectors.joining(" "));
+
         FavoriteEntry newFavorite = new FavoriteEntry(
                 shortTitle, imageUrl, fullTitle, currentDate, currentDesc, currentLink
         );
+
+        // Evitar duplicado también en BD
+        int userId = SceneManager.getUserKey();
         if (favoritesImagesTableview.getItems().contains(newFavorite)) {
-            new Alert(Alert.AlertType.INFORMATION, "Esta imagen ya está en tus favoritos.").showAndWait();
-        } else {
-            favoritesImagesTableview.getItems().add(newFavorite);
+            new Alert(Alert.AlertType.INFORMATION, "Ya la tienes guardada.").showAndWait();
+            return;
         }
+
+        try {
+            FavoriteImageDAO.insertFavorite(newFavorite, userId);
+            favoritesImagesTableview.getItems().add(newFavorite);
+
+            new Alert(Alert.AlertType.CONFIRMATION, "Favorito almacenado correctamente").showAndWait();
+
+        } catch (SQLException | NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Error almacenando favorito: " + e.getMessage()).showAndWait();
+        }
+    }
+
+    private void bindDataToManager() {
+        titleImage.textProperty().bind(imageManager.currentTitleProperty());
+        date.textProperty().bind(imageManager.currentDateProperty());
+        description.textProperty().bind(imageManager.currentDescriptionProperty());
+        hyperLink.textProperty().bind(imageManager.currentHyperlinkProperty());
+    }
+
+    // CELLS (UI) no cambian
+    private void setupFavoritesListView() {
+        favoritesImagesTableview.setCellFactory(param -> new ListCell<>() {
+            private final HBox hbox = new HBox(10);
+            private final ImageView thumb = new ImageView();
+            private final Label lbl = new Label();
+
+            {
+                thumb.setFitWidth(40);
+                thumb.setFitHeight(40);
+                hbox.setAlignment(Pos.CENTER_LEFT);
+                hbox.getChildren().addAll(thumb, lbl);
+            }
+
+            @Override
+            protected void updateItem(FavoriteEntry item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                } else {
+                    thumb.setImage(new Image(item.getImageUrl(), 40, 40, true, true));
+                    lbl.setText(item.getDisplayTitle());
+                    setGraphic(hbox);
+                }
+            }
+        });
     }
 
     @FXML
@@ -147,49 +204,6 @@ public class mainViewController implements Initializable {
 
     }
 
-
-    private void setupFavoritesListView() {
-        favoritesImagesTableview.setCellFactory(param -> new ListCell<FavoriteEntry>() {
-            private final HBox hbox = new HBox(10);
-            private final ImageView thumbImageView = new ImageView();
-            private final Label titleLabel = new Label();
-
-            {
-                thumbImageView.setFitWidth(40);
-                thumbImageView.setFitHeight(40);
-                thumbImageView.setPreserveRatio(false);
-                hbox.setAlignment(Pos.CENTER_LEFT);
-                hbox.getChildren().addAll(thumbImageView, titleLabel);
-            }
-
-            @Override
-            protected void updateItem(FavoriteEntry item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    Image thumbImage = new Image(item.getImageUrl(), 40, 40, true, true, true);
-                    thumbImageView.setImage(thumbImage);
-                    titleLabel.setText(item.getDisplayTitle());
-                    setGraphic(hbox);
-                }
-            }
-        });
-    }
-
-    private void bindDataToManager() {
-        titleImage.textProperty().bind(imageManager.currentTitleProperty());
-        date.textProperty().bind(imageManager.currentDateProperty());
-        description.textProperty().bind(imageManager.currentDescriptionProperty());
-        hyperLink.textProperty().bind(imageManager.currentHyperlinkProperty());
-
-        hyperLink.visibleProperty().bind(
-                imageManager.currentHyperlinkProperty().isNotNull()
-                        .and(imageManager.currentHyperlinkProperty().isNotEmpty())
-        );
-    }
-
     private void unbindDataFromManager() {
         titleImage.textProperty().unbind();
         date.textProperty().unbind();
@@ -217,5 +231,4 @@ public class mainViewController implements Initializable {
         });
         fadeOut.play();
     }
-
 }

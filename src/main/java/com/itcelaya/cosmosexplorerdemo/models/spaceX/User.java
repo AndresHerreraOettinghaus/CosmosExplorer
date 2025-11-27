@@ -12,7 +12,6 @@ public class User {
     private final StringProperty password;
 
 
-
     public User(int id, String username, String email, String password) {
         this.id = new SimpleIntegerProperty(id);
         this.username = new SimpleStringProperty(username);
@@ -51,4 +50,5 @@ public class User {
     public StringProperty passwordProperty() {
         return password;
     }
+
 }
