@@ -1,4 +1,4 @@
-package com.itcelaya.cosmosexplorerdemo.DTO;
+package com.itcelaya.cosmosexplorerdemo.DTO.spaceX;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

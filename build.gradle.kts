@@ -32,7 +32,7 @@ application {
 
 javafx {
     version = "17.0.6"
-    modules = listOf("javafx.controls", "javafx.fxml")
+    modules = listOf("javafx.controls", "javafx.fxml", "javafx.web")
 }
 
 dependencies {
@@ -43,6 +43,7 @@ dependencies {
     implementation("com.dlsc.formsfx:formsfx-core:11.6.0")
     implementation("org.kordamp.ikonli:ikonli-javafx:12.4.0")
     implementation("org.kordamp.ikonli:ikonli-fontawesome6-pack:12.4.0")
+    implementation("com.google.code.gson:gson:2.11.0")
     implementation(group = "com.mysql", name = "mysql-connector-j", version = "9.2.0")
     implementation("org.controlsfx:controlsfx:11.2.1")
 }

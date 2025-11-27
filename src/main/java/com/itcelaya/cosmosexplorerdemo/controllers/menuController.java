@@ -28,7 +28,7 @@ public class menuController implements Initializable {
     }
     @FXML
     void loadISS() {
-
+        SceneManager.loadVbox(windowContainer, "fxml/iss/iss_view.fxml");
     }
 
     @FXML

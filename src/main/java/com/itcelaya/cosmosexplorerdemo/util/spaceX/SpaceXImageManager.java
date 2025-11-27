@@ -11,7 +11,7 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import com.itcelaya.cosmosexplorerdemo.DTO.LaunchV5Dto;
+import com.itcelaya.cosmosexplorerdemo.DTO.spaceX.LaunchV5Dto;
 
 import java.net.URI;
 import java.net.http.HttpClient;
